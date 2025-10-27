@@ -1,10 +1,19 @@
 package model;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "pokedex")
 public class Pokedex {
+
+    public Pokedex(String nome, BigDecimal peso, String misc) {
+        this.nome = nome;
+        this.peso = peso;
+        this.misc = misc;
+    }
+
+    public Pokedex() {}
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,7 +23,7 @@ public class Pokedex {
     private String nome;
 
     @Column (name = "peso", precision = 10 ,scale = 2)
-    private double peso;
+    private BigDecimal peso;
 
     @Column(name = "misc")
     private String misc;
@@ -35,11 +44,11 @@ public class Pokedex {
         this.nome = nome;
     }
 
-    public double getPeso() {
+    public BigDecimal getPeso() {
         return peso;
     }
 
-    public void setPeso(double peso) {
+    public void setPeso(BigDecimal peso) {
         this.peso = peso;
     }
 
