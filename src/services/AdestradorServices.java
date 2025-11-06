@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.util.Date;
+import java.util.List;
 
 public class AdestradorServices {
 
@@ -71,6 +72,21 @@ public class AdestradorServices {
             System.out.println("Adestrador eliminado");
         } catch (Exception e) {
             System.out.println("Error al eliminar al Adestrador: " + e.getMessage());
+        }
+    }
+
+    public void eliminarTodosAdestradores() {
+        try (Session session = HibernateConfig.getSessionFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
+
+            session.createQuery("delete from Adestrador").executeUpdate();
+            transaction.commit();
+        }
+    }
+
+    public List<Adestrador> listarAdestradores() {
+        try (Session session = HibernateConfig.getSessionFactory().openSession()) {
+            return session.createQuery("from Adestrador", Adestrador.class).list();
         }
     }
 

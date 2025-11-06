@@ -50,4 +50,14 @@ public class Adestrador {
     public void setNacemento(Date nacemento) {
         this.nacemento = nacemento;
     }
+
+    @Override
+    public String toString() {
+        return "Adestrador{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", nacemento=" + nacemento +
+                '}';
+    }
 }
+

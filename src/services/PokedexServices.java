@@ -137,5 +137,12 @@ public class PokedexServices {
         }
     }
 
+    public void eliminarTodaPokedex() {
+        try (Session session = HibernateConfig.getSessionFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
 
+            session.createQuery("delete from Pokedex").executeUpdate();
+            transaction.commit();
+        }
+    }
 }

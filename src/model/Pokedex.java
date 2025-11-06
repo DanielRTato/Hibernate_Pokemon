@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
- @Table(name = "pokedex")
+@Table(name = "pokedex")
 public class Pokedex {
 
     @Id
