@@ -1,7 +1,9 @@
 import static javax.xml.bind.DatatypeConverter.printDateTime;
 import config.HibernateConfig;
+import model.Adestrador;
 import model.Pokedex;
 import org.hibernate.Session;
+import services.AdestradorServices;
 import services.PokedexServices;
 
 import java.math.BigDecimal;
@@ -48,6 +50,13 @@ public class Main {
 //        }
 
         //      -- PARTE 2 --
+        AdestradorServices adestradorServices = new AdestradorServices();
+        List<Adestrador> listaAdestrador = new ArrayList<>();
+
+        // Inserir 2 Adestradores
+        adestradorServices.crearAdestrador();
+
+
 
 
 

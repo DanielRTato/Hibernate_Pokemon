@@ -11,7 +11,7 @@ import java.util.List;
 
 public class PokedexServices {
 
-    //          .----- -- USANDO Session.get, save, update, delete --------
+    //          ------- USANDO Session.get, save, update, delete --------
 
     public void crearPokedex(String nome, BigDecimal peso, String misc) {
         try (Session session = HibernateConfig.getSessionFactory().openSession()) {
