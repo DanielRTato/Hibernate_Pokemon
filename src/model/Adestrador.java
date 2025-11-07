@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -12,17 +13,16 @@ public class Adestrador {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "name", nullable = false, length = 50)
+    @Column(name = "nome", nullable = false, length = 50)
     private String nome;
 
     @Column(name = "nacemento")
-    @Temporal(TemporalType.DATE)
-    private Date nacemento;
+    private LocalDate nacemento;
 
 
     public Adestrador() {}
 
-    public Adestrador(String nome, Date nacemento) {
+    public Adestrador(String nome, LocalDate nacemento) {
         this.nome = nome;
         this.nacemento = nacemento;
     }
@@ -43,11 +43,11 @@ public class Adestrador {
         this.nome = nome;
     }
 
-    public Date getNacemento() {
+    public LocalDate getNacemento() {
         return nacemento;
     }
 
-    public void setNacemento(Date nacemento) {
+    public void setNacemento(LocalDate nacemento) {
         this.nacemento = nacemento;
     }
 

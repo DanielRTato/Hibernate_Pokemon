@@ -6,12 +6,13 @@ import model.Pokedex;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
 public class AdestradorServices {
 
-    public void crearAdestrador (String nome, Date nacemento) {
+    public void crearAdestrador (String nome, LocalDate nacemento) {
         try (Session session = HibernateConfig.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
 
@@ -28,7 +29,7 @@ public class AdestradorServices {
         }
     }
 
-    public void actualizarAdestrador(Long id, String nome, Date nacemento) {
+    public void actualizarAdestrador(Long id, String nome, LocalDate nacemento) {
         try (Session session = HibernateConfig.getSessionFactory().openSession()) {
             Transaction transaction = session.getTransaction();
 
