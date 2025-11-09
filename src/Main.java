@@ -52,7 +52,7 @@ public class Main {
             pokedexServices.eliminarPokedex(p.getId());
         }
 
-        //      -- PARTE 2 --
+        //                       <--------------- PARTE 2 ------------->
         AdestradorServices adestradorServices = new AdestradorServices();
         List<Adestrador> listaAdestrador = new ArrayList<>();
 
@@ -83,6 +83,10 @@ public class Main {
         for(Adestrador a : listaAdestradorActualizada) {
             adestradorServices.eliminarAdestrador(a.getId());
         }
+
+        //                   <------- PARTE 3 -------->
+
+
 
 
 
