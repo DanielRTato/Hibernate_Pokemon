@@ -5,6 +5,8 @@ import model.Pokedex;
 import org.hibernate.Session;
 import services.AdestradorServices;
 import services.PokedexServices;
+import util.AdestradorXML;
+import util.PokedexXML;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -46,9 +48,9 @@ public class Main {
         List<Pokedex> listaPokedexActualizada = pokedexServices.listarPokedex();
         listaPokedexActualizada.forEach(System.out::println);
 
-        for (Pokedex p : listaPokedexActualizada) {
-            pokedexServices.eliminarPokedex(p.getId());
-        }
+//        for (Pokedex p : listaPokedexActualizada) {
+//            pokedexServices.eliminarPokedex(p.getId());
+//        }
 
         //      -- PARTE 2 --
         AdestradorServices adestradorServices = new AdestradorServices();
@@ -69,6 +71,14 @@ public class Main {
         // Listar Adestradores (Actualizada)
         List<Adestrador> listaAdestradorActualizada = adestradorServices.listarAdestradores();
         listaAdestradorActualizada.forEach(System.out::println);
+
+        // toXML pokemons y adestradores
+        AdestradorXML adestradorXML = new AdestradorXML();
+        PokedexXML pokedexXML =new PokedexXML();
+
+        adestradorXML.crearAdestradorXML(listaAdestradorActualizada, "adestradores.xml");
+        pokedexXML.crearPokedexXML(listaPokedexActualizada, "pokedex.xml");
+
 
 
 
