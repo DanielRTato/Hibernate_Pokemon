@@ -108,7 +108,7 @@ public class PokedexServices {
 
     public List<Pokedex> listarPokedex() {
         try (Session session = HibernateConfig.getSessionFactory().openSession()) {
-            return session.createQuery("from Pokedex", Pokedex.class).getResultList();
+            return session.createQuery("from Pokedex", Pokedex.class).list();
 
         } catch (Exception e) {
             System.out.println("Error al listar Pokedex por Query: " + e.getMessage());
