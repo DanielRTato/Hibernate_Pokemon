@@ -48,9 +48,9 @@ public class Main {
         List<Pokedex> listaPokedexActualizada = pokedexServices.listarPokedex();
         listaPokedexActualizada.forEach(System.out::println);
 
-//        for (Pokedex p : listaPokedexActualizada) {
-//            pokedexServices.eliminarPokedex(p.getId());
-//        }
+        for (Pokedex p : listaPokedexActualizada) {
+            pokedexServices.eliminarPokedex(p.getId());
+        }
 
         //      -- PARTE 2 --
         AdestradorServices adestradorServices = new AdestradorServices();
@@ -78,6 +78,13 @@ public class Main {
 
         adestradorXML.crearAdestradorXML(listaAdestradorActualizada, "adestradores.xml");
         pokedexXML.crearPokedexXML(listaPokedexActualizada, "pokedex.xml");
+
+        // Eliminar Adestradores+
+        for(Adestrador a : listaAdestradorActualizada) {
+            adestradorServices.eliminarAdestrador(a.getId());
+        }
+
+
 
 
 

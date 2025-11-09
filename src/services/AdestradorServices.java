@@ -31,7 +31,7 @@ public class AdestradorServices {
 
     public void actualizarAdestrador(Long id, String nome, LocalDate nacemento) {
         try (Session session = HibernateConfig.getSessionFactory().openSession()) {
-            Transaction transaction = session.getTransaction();
+            Transaction transaction = session.beginTransaction();
 
             Adestrador adestrador = session.get(Adestrador.class, id);
             if (adestrador != null){
@@ -61,7 +61,7 @@ public class AdestradorServices {
 
     public void eliminarAdestrador(Long id) {
         try(Session session = HibernateConfig.getSessionFactory().openSession()) {
-            Transaction transaction = session.getTransaction();
+            Transaction transaction = session.beginTransaction();
 
             Adestrador adestrador = session.get(Adestrador.class, id);
             if (adestrador != null){
