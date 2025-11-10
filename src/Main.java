@@ -25,32 +25,33 @@ public class Main {
         List<Pokedex> listaPokedex = new ArrayList<>();
         PokedexServices pokedexServices = new PokedexServices();
 
-        // Insertar 10 pokemon el la tabla pokedex
-//        pokedexServices.crearPokedex("Slaking", new BigDecimal(500.12), "Grande");
-//        pokedexServices.crearPokedex("Butterfly", new BigDecimal(111), "Bicho");
-//        pokedexServices.crearPokedex("Evee", new BigDecimal(1), "Rata");
-//        pokedexServices.crearPokedex("Espeon", new BigDecimal(111.12), "Rata Rara");
-//        pokedexServices.crearPokedex("Glaceon", new BigDecimal(12345.1), "Rata fria");
-//        pokedexServices.crearPokedex("Vulpix", new BigDecimal(99), "Rata fuego");
-//        pokedexServices.crearPokedex("Ninetales", new BigDecimal(0), "Perro fuego");
-//        pokedexServices.crearPokedex("Arcanite", new BigDecimal(1), "Eh perro gordo fuego");
-//        pokedexServices.crearPokedex("Blaziken", new BigDecimal(2), "Pollo fuego");
-//        pokedexServices.crearPokedex("Rapidash", new BigDecimal(12312312), "Caballo fuego");
+        System.out.println("Insertar 10 Pokemons na Pokedex");
+        Pokedex pSaling = pokedexServices.crearPokedex("Slaking", new BigDecimal(500.12), "Grande");
+        Pokedex pButterfly = pokedexServices.crearPokedex("Butterfly", new BigDecimal(111), "Bicho");
+        Pokedex pEvee = pokedexServices.crearPokedex("Evee", new BigDecimal(1), "Rata");
+        Pokedex pEspeon = pokedexServices.crearPokedex("Espeon", new BigDecimal(111.12), "Rata Rara");
+        Pokedex pGlaceon = pokedexServices.crearPokedex("Glaceon", new BigDecimal(12345.1), "Rata fria");
+        Pokedex pVulpix = pokedexServices.crearPokedex("Vulpix", new BigDecimal(99), "Rata fuego");
+        Pokedex pNinetales = pokedexServices.crearPokedex("Ninetales", new BigDecimal(0), "Perro fuego");
+        Pokedex pArcanite = pokedexServices.crearPokedex("Arcanite", new BigDecimal(1), "Eh perro gordo fuego");
+        Pokedex pBlaziken = pokedexServices.crearPokedex("Blaziken", new BigDecimal(2), "Pollo fuego");
+        Pokedex pRapidash = pokedexServices.crearPokedex("Rapidash", new BigDecimal(12312312), "Caballo fuego");
 
-        // Listar Pokemons da pokedex
+        System.out.println("Listar pokedex");
         listaPokedex = pokedexServices.listarPokedex();
         for (Pokedex pokedex : listaPokedex) {
             System.out.println(pokedex);
         }
 
-        //  Modificar 2 entradas na pokedex
+        System.out.println("Modificar 2 pokedex");
         pokedexServices.actualizarPokedex(1l, "Slaking", new BigDecimal(500.12), "Grande actualizado");
         pokedexServices.actualizarPokedex(2l, "Butefly ", new BigDecimal(5.02), "Bicho actualizado");
 
-        // Listar pokemons na pokedex actualizada
+        System.out.println("Listar pokedex modificada");
         List<Pokedex> listaPokedexActualizada = pokedexServices.listarPokedex();
         listaPokedexActualizada.forEach(System.out::println);
 
+//        System.out.println("Eliminando toda la pokedex");
 //        for (Pokedex p : listaPokedexActualizada) {
 //            pokedexServices.eliminarPokedex(p.getId());
 //        }
@@ -59,19 +60,19 @@ public class Main {
         AdestradorServices adestradorServices = new AdestradorServices();
         List<Adestrador> listaAdestrador = new ArrayList<>();
 
-        // Inserir 2 Adestradores
-//            adestradorServices.crearAdestrador("Gary", LocalDate.of(1996, 5, 16));
-//            adestradorServices.crearAdestrador("Ash", LocalDate.of(1996, 1, 12));
+        System.out.println("Insertar 2 Adestradores");
+        Adestrador aGary = adestradorServices.crearAdestrador("Gary", LocalDate.of(1996, 5, 16));
+        Adestrador aAsh = adestradorServices.crearAdestrador("Ash", LocalDate.of(1996, 1, 12));
 
-        // Listar Adestradores
+        System.out.println("Listar Adestradores");
         listaAdestrador = adestradorServices.listarAdestradores();
         listaAdestrador.forEach(System.out::println);
 
-        //Modificar dos Adestradores
+        System.out.println("Modificar 2 Adestradores");
         adestradorServices.actualizarAdestrador(1L, "GarryActualizado", LocalDate.of(1994, 1, 24));
         adestradorServices.actualizarAdestrador(2L, "AshActualizado", LocalDate.of(1995, 9, 16));
 
-        // Listar Adestradores (Actualizada)
+        System.out.println("Listar Adestradores modificados");
         List<Adestrador> listaAdestradorActualizada = adestradorServices.listarAdestradores();
         listaAdestradorActualizada.forEach(System.out::println);
 
@@ -79,10 +80,11 @@ public class Main {
         AdestradorXML adestradorXML = new AdestradorXML();
         PokedexXML pokedexXML = new PokedexXML();
 
+        System.out.println("Creando ficheros XML de Adestradores y Pokedex");
         adestradorXML.crearAdestradorXML(listaAdestradorActualizada, "adestradores.xml");
         pokedexXML.crearPokedexXML(listaPokedexActualizada, "pokedex.xml");
 
-        // Eliminar Adestradores+
+//        System.out.println("Eliminando todos los Adestradores");
 //        for(Adestrador a : listaAdestradorActualizada) {
 //            adestradorServices.eliminarAdestrador(a.getId());
 //        }
@@ -91,40 +93,36 @@ public class Main {
 
         PokemonService pokemonService = new PokemonService();
 
-        // Inserir 12 pokemons na taboa de pokemon (6 para cada adestrador)
-        Adestrador Gary = adestradorServices.buscarPorId(1L);
-        Adestrador Ash = adestradorServices.buscarPorId(2L);
+        System.out.println("Insertar 12 Pokemons 6 para cada adestrador");
+        pokemonService.crearPokemon("Slaking", LocalDate.of(2020, 1, 1), pSaling, aGary);
+        pokemonService.crearPokemon("Butterfly", LocalDate.of(2019, 2, 2), pButterfly, aGary);
+        pokemonService.crearPokemon("Evee", LocalDate.of(2018, 3, 3), pEvee, aGary);
+        pokemonService.crearPokemon("Espeon", LocalDate.of(2017, 4, 4), pEspeon, aGary);
+        pokemonService.crearPokemon("Glaceon", LocalDate.of(2016, 5, 5),pGlaceon, aGary);
+        pokemonService.crearPokemon("Vulpix", LocalDate.of(2015, 6, 6), pVulpix, aGary);
+        pokemonService.crearPokemon("Ninetales", LocalDate.of(2020, 7, 7), pNinetales, aAsh);
+        pokemonService.crearPokemon("Arcanite", LocalDate.of(2019, 8, 8), pArcanite, aAsh);
+        pokemonService.crearPokemon("Blaziken", LocalDate.of(2018, 9, 9), pBlaziken, aAsh);
+        pokemonService.crearPokemon("Rapidash", LocalDate.of(2017, 10, 10), pRapidash, aAsh);
+        pokemonService.crearPokemon("Evee", LocalDate.of(2016, 11, 11), pEvee, aAsh);
+        pokemonService.crearPokemon("Glaceon", LocalDate.of(2015, 12, 12), pGlaceon, aAsh);
 
-        Pokedex Slaking = pokedexServices.buscarPorId(1L);
-        Pokedex Butterfly = pokedexServices.buscarPorId(2L);
-        Pokedex Evee = pokedexServices.buscarPorId(3L);
-        Pokedex Espeon = pokedexServices.buscarPorId(4L);
-        Pokedex Glaceon = pokedexServices.buscarPorId(5L);
-        Pokedex Vulpix = pokedexServices.buscarPorId(6L);
-        Pokedex Ninetales = pokedexServices.buscarPorId(7L);
-        Pokedex Arcanite = pokedexServices.buscarPorId(8L);
-        Pokedex Blaziken = pokedexServices.buscarPorId(9L);
-        Pokedex Rapidash = pokedexServices.buscarPorId(10L);
+        System.out.println("Listar Pokemons de la tabla Pokemon");
+        pokemonService.listarPokemons().forEach(System.out::println);
 
+        System.out.println("Modificar 4 Pokemons");
+        List<Pokemon> pokemons = pokemonService.listarPokemons();
+        for (int i = 0; i<4; i++) {
+            pokemonService.actualizaNombrePokemon(pokemons.get(i).getId(), pokemons.get(i).getNome() + "Actualido");
+        }
 
-//            pokemonService.crearPokemon("Slaking", LocalDate.of(2020, 1, 5), Slaking, Gary);
-//            pokemonService.crearPokemon("Butterfly", LocalDate.of(2020, 1, 5), Butterfly, Gary);
-//            pokemonService.crearPokemon("Evee", LocalDate.of(2020, 1, 5), Evee, Gary);
-//            pokemonService.crearPokemon("Espeon", LocalDate.of(2020, 1, 5), Espeon, Gary);
-//            pokemonService.crearPokemon("Glaceon", LocalDate.of(2020, 1, 5), Glaceon, Gary);
-//            pokemonService.crearPokemon("Vulpix", LocalDate.of(2020, 1, 5), Vulpix, Gary);
-//            pokemonService.crearPokemon("Ninetales", LocalDate.of(2020, 1, 5), Ninetales, Ash);
-//            pokemonService.crearPokemon("Arcanite", LocalDate.of(2020, 1, 5), Arcanite, Ash);
-//            pokemonService.crearPokemon("Blaziken", LocalDate.of(2020, 1, 5), Blaziken, Ash);
-//            pokemonService.crearPokemon("Rapidash", LocalDate.of(2020, 1, 5), Rapidash, Ash);
-//            pokemonService.crearPokemon("Evee", LocalDate.of(2020, 1, 5), Evee, Ash);
-//            pokemonService.crearPokemon("Espeon", LocalDate.of(2020, 1, 5), Espeon, Ash);
-
-        List<Pokemon> listaPokemon =  pokemonService.listarPokemons();
-
-        listaPokemon.forEach(System.out::println);
-
+        System.out.println("Mostrar Pokemons modificados");
+        pokemonService.listarPokemons().forEach(System.out::println);
 
 
     }
+
+
+
+
 }

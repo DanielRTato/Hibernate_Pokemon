@@ -13,7 +13,7 @@ public class PokedexServices {
 
     //          ------- USANDO Session.get, save, update, delete --------
 
-    public void crearPokedex(String nome, BigDecimal peso, String misc) {
+    public Pokedex crearPokedex(String nome, BigDecimal peso, String misc) {
         try (Session session = HibernateConfig.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
 
@@ -26,8 +26,11 @@ public class PokedexServices {
             transaction.commit();
             System.out.println("Registro de Pokedex creada correctamente");
 
+            return nuevaPokedex;
+
         } catch (Exception e) {
             System.out.println("Error al crear la Pokedex: " + e.getMessage());
+            return null;
         }
     }
 

@@ -12,7 +12,7 @@ import java.util.List;
 
 public class AdestradorServices {
 
-    public void crearAdestrador (String nome, LocalDate nacemento) {
+    public Adestrador crearAdestrador (String nome, LocalDate nacemento) {
         try (Session session = HibernateConfig.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
 
@@ -24,8 +24,10 @@ public class AdestradorServices {
             transaction.commit();
 
             System.out.println("Registro de Adestrador realizado correctamente.");
+            return adestrador;
         } catch (Exception e) {
             System.out.println("Error al crear al Adestrador: " + e.getMessage());
+            return null;
         }
     }
 
