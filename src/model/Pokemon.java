@@ -21,11 +21,11 @@ public class Pokemon implements Serializable {
     @Column(name = "nacemento")
     private LocalDate nacemento;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "pokedexentry", nullable = false)
     private Pokedex pokedexEntry;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "adestrador", nullable = false)
     private Adestrador adestrador;
 

@@ -91,4 +91,10 @@ public class AdestradorServices {
         }
     }
 
+    public Adestrador buscarPorId(Long id) {
+        try (Session session = HibernateConfig.getSessionFactory().openSession()) {
+            return session.get(Adestrador.class, id);
+        }
+    }
+
 }

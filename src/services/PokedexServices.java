@@ -145,4 +145,11 @@ public class PokedexServices {
             transaction.commit();
         }
     }
+
+    public Pokedex buscarPorId(Long id) {
+        try (Session session = HibernateConfig.getSessionFactory().openSession()) {
+            return session.get(Pokedex.class, id);
+        }
+    }
+
 }
