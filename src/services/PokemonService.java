@@ -59,7 +59,7 @@ public class PokemonService {
 
     public void actualizarPokemon(Pokemon pokemon) {
         try (Session session = HibernateConfig.getSessionFactory().openSession()) {
-            Transaction transaction = session.getTransaction();
+            Transaction transaction = session.beginTransaction();
 
             session.update(pokemon);
             transaction.commit();

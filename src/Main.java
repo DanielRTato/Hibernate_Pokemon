@@ -1,26 +1,23 @@
-import static javax.xml.bind.DatatypeConverter.printDateTime;
-
-import config.HibernateConfig;
+import io.SerializarPokedex;
 import model.Adestrador;
 import model.Pokedex;
 import model.Pokemon;
-import org.hibernate.Session;
 import services.AdestradorServices;
 import services.PokedexServices;
 import services.PokemonService;
-import util.AdestradorXML;
-import util.PokedexXML;
+import io.AdestradorXML;
+import io.PokedexXML;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
 
         //      -- PARTE 1 --
+        System.out.println("<-----PARTE 1----->");
 
         List<Pokedex> listaPokedex = new ArrayList<>();
         PokedexServices pokedexServices = new PokedexServices();
@@ -57,6 +54,7 @@ public class Main {
 //        }
 
         //                       <--------------- PARTE 2 ------------->
+        System.out.println("<-----PARTE 2----->");
         AdestradorServices adestradorServices = new AdestradorServices();
         List<Adestrador> listaAdestrador = new ArrayList<>();
 
@@ -90,6 +88,7 @@ public class Main {
 //        }
 
         //                   <------- PARTE 3 -------->
+        System.out.println("<-----PARTE 3----->");
 
         PokemonService pokemonService = new PokemonService();
 
@@ -100,6 +99,7 @@ public class Main {
         pokemonService.crearPokemon("Espeon", LocalDate.of(2017, 4, 4), pEspeon, aGary);
         pokemonService.crearPokemon("Glaceon", LocalDate.of(2016, 5, 5),pGlaceon, aGary);
         pokemonService.crearPokemon("Vulpix", LocalDate.of(2015, 6, 6), pVulpix, aGary);
+
         pokemonService.crearPokemon("Ninetales", LocalDate.of(2020, 7, 7), pNinetales, aAsh);
         pokemonService.crearPokemon("Arcanite", LocalDate.of(2019, 8, 8), pArcanite, aAsh);
         pokemonService.crearPokemon("Blaziken", LocalDate.of(2018, 9, 9), pBlaziken, aAsh);
@@ -119,10 +119,24 @@ public class Main {
         System.out.println("Mostrar Pokemons modificados");
         pokemonService.listarPokemons().forEach(System.out::println);
 
+        System.out.println("Exportar dúas entradas da Pokedex serializadas");
+        SerializarPokedex.serializarPokedex(listaPokedexActualizada, "pokedex_serializadas.dat");
+
+        System.out.println("Importar dúas Pokedex serializadas e restaurar datos");
+        Pokedex[] pokedexImportadas = SerializarPokedex.deserializarPokedex("pokedex_serializadas.bin");
+        for (Pokedex p : pokedexImportadas) {
+            pokedexServices.actualizarPokedex(p.getId(), p.getNome(), p.getPeso(), p.getMisc());
+        }
+
+        System.out.println("Lista-los datos das táboas");
+        pokedexServices.listarPokedex().forEach(System.out::println);
+        adestradorServices.listarAdestradores().forEach(System.out::println);
+        pokemonService.listarPokemons().forEach(System.out::println);
+
+        System.out.println("Eliminar tódo-los datos das táboas");
+        pokemonService.elimarTodosPokemons();
+        adestradorServices.eliminarTodosAdestradores();
+        pokedexServices.eliminarTodaPokedex();
 
     }
-
-
-
-
 }
